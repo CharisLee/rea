@@ -33,6 +33,7 @@ export const TOOL_KINDS = [
   "browser-provider",
   "electron-provider",
   "runtime-provider",
+  "pcap-provider",
   "application",
   "session",
 ] as const;
@@ -54,6 +55,8 @@ export interface ToolContract<
   readonly title: string;
   readonly description: string;
   readonly kind: ToolKind;
+  /** This handler dispatches through the active binary-analysis session. */
+  readonly requiresActiveTarget?: boolean;
   readonly inputSchema: InputSchema;
   readonly outputSchema: OutputSchema;
   readonly effects: ToolEffects;
